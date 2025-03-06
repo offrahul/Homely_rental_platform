@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav class="navbar nav-bar-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid" >
+      <a class="fa-compass" href="/listings"> <i class="fa-solid fa-house-crack"></i></i></a>
+      <div class="d-flex">
+        <!-- <a class="nav-link active mx-2" href="/">Home</a> -->
+        <a class="nav-link mx-2" href="/listings">All pages</a>
+        <a class="nav-link mx-2" href="/listings/new">Add your pages</a>
+      </div>
+      <div class="d-flex ms-auto">
+        <% if(!currUser){%>
+          <a class="nav-link active mx-2" href="/signup"><i>Signup</i></a>
+          <a class="nav-link mx-2" href="/login"><i>Login</i></a>
+
+          <%}%>
+            <% if(currUser){%>
+              <a class="nav-link mx-2" href="/logout">Logout</a>
+              <%}%>
+      </div>
+    </div>
+  </nav>
+
+
+
+</body>
+
+</html>

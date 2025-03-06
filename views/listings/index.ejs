@@ -1,0 +1,120 @@
+<%layout("/layout/boilerplate.ejs") %>
+<body>
+   
+  <style>
+    #filters{
+display:flex;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .filter{
+      text-align: center;
+      margin-right: 2rem;
+      opacity: 0.7;
+      font-size: 0.8rem ;
+    }
+    .filter:hover{
+      color: black;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+  #filters {
+    flex-wrap: wrap; /* Wrap items on small screens */
+    gap: 5px;
+  }
+}
+.gst{
+  display: none;
+  float: right;
+  border: red;
+}
+.tax{
+  border: 1px solid black;
+  border-radius:1rem;
+  height: 3.3rem;
+  padding: 1rem;
+  background-color: rgb(233, 225, 225);
+  border: none;
+
+}
+
+  </style>
+<div id="filters">
+  <div class="filter">
+   <div> <i class="fa-solid fa-camera"></i></div>
+    <p>camera</p>
+  </div>
+  <div class="filter">
+    <div> <i class="fa-solid fa-cloud"></i></div>
+     <p>cloud</p>
+   </div>
+   <div class="filter">
+    <div> <i class="fa-solid fa-circle-info "></i></div>
+     <p>Help</p>
+   </div>
+   <div class="filter">
+    <div> <i class="fa-solid fa-people-roof"></i></div>
+     <p>Rooms</p>
+   </div>
+   <div class="filter">
+    <div> <i class="fa-solid fa-city"></i></div>
+     <p>city</p>
+   </div>
+   <div class="filter">
+    <div> <i class="fa-solid fa-plane-departure"></i></i></div>
+     <p>Airport</p>
+   </div>
+   <div class="filter">
+    <div> <i class="fa-solid fa-umbrella-beach"></i></div>
+     <p>Beach</p>
+   </div>
+<div class="tax ms-auto">
+   <div class="form-check form-switch form-check-reverse ms-auto">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse" style="float: right;">
+    <label class="form-check-label" for="flexSwitchCheckReverse"><b>show preview</b></label>
+   </div>
+  </div>
+</div>
+
+    <div class="row row-cols-lg-3 row-col-md-2 row-cols-sm-1 mt-1">
+    <% for(let listing of allListings){ %>
+        <a href="/listings/<%=listing._id%>" class="listing-link">
+    <div class="card col" >
+        <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+        <div class="card-img-overlay">
+             
+          </div>
+        <div class="card-body">
+          <p class="card-text">
+           <b> <%=listing.title%></b>
+            <br>
+            <li>&#8377;<%=listing.price.toLocaleString("en-IN") %>/night <i class="gst">&nbsp;+&nbsp;20% GST</i></li>
+           
+        </p>
+        </div>
+      </div>
+    </a>
+      <% }%>
+    </div>
+
+
+
+
+
+
+
+</body>
+
+ <script>
+  let toggleButton=document.getElementById("flexSwitchCheckReverse");
+  toggleButton.addEventListener("change",function(){
+    let gst=document.getElementsByClassName("gst");
+    for(tax of gst){
+      if(tax.style.display !="inline"){
+      tax.style.display ="inline";
+    }
+    else{
+      tax.style.display="none";
+    }
+        }});
+ </script>
