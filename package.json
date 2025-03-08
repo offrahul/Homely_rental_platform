@@ -6,7 +6,7 @@
 "scripts": {
   "start": "node app.js"
 }
-
+,
   
   "name": "major_projects",
   "version": "1.0.0",
