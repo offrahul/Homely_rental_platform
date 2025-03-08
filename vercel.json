@@ -1,0 +1,11 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "api/app.js", "use": "@vercel/node" }
+    ],"logs": [
+  { "level": "DEBUG", "format": "%[time] %{req}x-forwarded-for %> - %m %r %s %b" }
+],
+    "routes": [
+      { "src": "/(.*)", "dest": "api/app.js" }
+    ]
+  }
